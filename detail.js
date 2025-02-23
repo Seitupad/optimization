@@ -1,5 +1,5 @@
-import products from './products.js';
-import cart from './cart.js';
+import products from 'products.js';
+import cart from 'cart.js';
 
 let listProduct = document.getElementById('listProduct');
 let app = document.getElementById('app');
