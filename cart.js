@@ -68,16 +68,14 @@ const cart = () => {
         listCartHTML.appendChild(newItem);
         newItem.innerHTML = `
             <div class="image">
-              <img src="${info.image}">
+              <img src="${info.image}" />
             </div>
             <div class="name">
               ${info.name}
             </div>
             <div class="totalPrice">$${itemTotalPrice.toFixed(2)}</div>
             <div class="quantity">
-              <span class="minus" data-id="${info.id}"><</span>
-              <span>${item.quantity}</span>
-              <span class="plus" data-id="${info.id}">></span>
+            <div class="success">Done</div>
             </div>
           `;
       });
@@ -109,17 +107,38 @@ const cart = () => {
             : cart[positionProductInCart].quantity + 1;
         setProductInCart(idProduct, quantity);
         break;
-      case buttonClick.classList.contains("minus"):
-        quantity = cart[positionProductInCart].quantity - 1;
-        setProductInCart(idProduct, quantity);
-        break;
-      case buttonClick.classList.contains("plus"):
-        quantity = cart[positionProductInCart].quantity + 1;
-        setProductInCart(idProduct, quantity);
-        break;
+      // case buttonClick.classList.contains("minus"):
+      //   quantity = cart[positionProductInCart].quantity - 1;
+      //   setProductInCart(idProduct, quantity);
+      //   break;
+      // case buttonClick.classList.contains("plus"):
+      //   quantity = cart[positionProductInCart].quantity + 1;
+      //   setProductInCart(idProduct, quantity);
+      //   break;
       default:
         break;
     }
+  });
+
+  // Random Product Button functionality
+  const randomProductBtn = document.getElementById("randomProductBtn");
+  const contentTab = document.getElementById("contentTab");
+
+  randomProductBtn.addEventListener("click", () => {
+    // Pick a random product from the product list
+    const randomProduct = products[Math.floor(Math.random() * products.length)];
+    const productHTML = `
+      <div class="random-product">
+        <h2>Random Product</h2>
+        <img src="${randomProduct.image}" alt="${randomProduct.name}" />
+        <h3>${randomProduct.name}</h3>
+        <p>Price: $${randomProduct.price}</p>
+        <p>profit: $${randomProduct.profit}</p>
+        <button class="addCart" data-id="${randomProduct.id}">Add to Cart</button>
+      </div>
+    `;
+    contentTab.style.display = "block";
+    contentTab.innerHTML = productHTML;
   });
 
   const initApp = () => {
