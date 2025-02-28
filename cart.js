@@ -129,12 +129,12 @@ const cart = () => {
     const randomProduct = products[Math.floor(Math.random() * products.length)];
     const productHTML = `
       <div class="random-product">
-        <h2>Random Product</h2>
+        <h2>Data Submission</h2>
         <img src="${randomProduct.image}" alt="${randomProduct.name}" />
         <h3>${randomProduct.name}</h3>
         <p>Price: $${randomProduct.price}</p>
         <p>profit: $${randomProduct.profit}</p>
-        <button class="addCart" data-id="${randomProduct.id}">Add to Cart</button>
+        <button class="addCart" data-id="${randomProduct.id}">Data submission</button>
       </div>
     `;
     contentTab.style.display = "block";
